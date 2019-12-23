@@ -14,15 +14,15 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
-    <form class="form-signin">
+    <form class="form-signin" id="signinform">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">E-Class</h1>
         <label for="inputEmail" class="sr-only">E-Mail Adres</label>
-        <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail Adres" required autofocus>
-        <label for="inputPassword" class="sr-only">Şifre</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Şifre" required>
-        <label for="inputRepeatPassword" class="sr-only">Şifre Tekrar</label>
-        <input type="password" id="inputRepeatPassword" class="form-control mt-0" placeholder="Şifre Tekrar" required>
+        <input type="email" id="inputEmail" maxlength="30" class="form-control" placeholder="E-Mail Adres" required autofocus>
+        <label for="password" class="sr-only">Şifre</label>
+        <input type="password" id="password" minlength="6" name="password" class="form-control" placeholder="Şifre" required>
+        <label for="password_again" class="sr-only">Şifre Tekrar</label>
+        <input type="password" id="password_again" minlength="6" name="password_again" class="form-control mt-0" placeholder="Şifre Tekrar" required>
         <button class="btn btn-lg btn-success btn-block" type="submit">Kayıt Ol</button>
         <hr class="bracket" />
         <a href="Login.aspx" class="btn btn-lg btn-primary btn-block">Giriş Yap</a>
@@ -33,6 +33,15 @@
     <script>
         $(document).ready(function () {
             $("body").addClass("text-center")
+            $('#signinform').validate({
+                errorClass: 'alert alert-danger',
+                rules: {
+                    password: "required",
+                    password_again: {
+                        equalTo: "#password"
+                    }
+                }
+            })
         })
     </script>
 </asp:Content>

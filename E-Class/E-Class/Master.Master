@@ -17,6 +17,29 @@
     <script src="Scripts/jquery-3.4.1.min.js"></script>
     <script src="Scripts/jquery.validate.min.js"></script>
     <script src="Scripts/bootstrap.min.js"></script>
+    <script>
+
+        jQuery.extend(jQuery.validator.messages, {
+            required: "Bu alan zorunlu.",
+            remote: "Lütfen bu alanı düzeltin.",
+            email: "Lütfen geçerli bir email adresi girin.",
+            url: "Lütfen geçerli bir URL adresi girin.",
+            date: "Lütfen geçerli bir tarih girin.",
+            dateISO: "Lütfen geçerli bir tarih (ISO) girin.",
+            number: "Lütfen geçerli bir sayı girin.",
+            digits: "Lütfen sadece rakam girin.",
+            creditcard: "Lütfen geçerli bir kredi kartı numarası girin.",
+            equalTo: "Lütfen birbirne eşit değerler girin.",
+            accept: "Lütfen uygun bir değer girin.",
+            maxlength: jQuery.validator.format("Lütfen en fazla {0} karakter girin."),
+            minlength: jQuery.validator.format("Lütfen en az {0} karakter girin."),
+            rangelength: jQuery.validator.format("Lütfen {0} ve {1} arası uzunlukta bir değer girin."),
+            range: jQuery.validator.format("Lütfen {0} ve {1} arası bir değer girin."),
+            max: jQuery.validator.format("Lütfen {0} ile eşit veya düşük bir değer girin."),
+            min: jQuery.validator.format("Lütfen {0} ile eşit veya yüksek bir değer girin .")
+        });
+    </script>
+  
     <asp:ContentPlaceHolder ID="cphScript" runat="server">
     </asp:ContentPlaceHolder>
 </body>
