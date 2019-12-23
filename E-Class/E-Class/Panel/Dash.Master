@@ -7,6 +7,7 @@
     <title></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link rel="stylesheet" href="<%= Page.ResolveUrl("~/") %>Content/bootstrap.min.css" />
+    <link rel="stylesheet" href="<%= Page.ResolveUrl("~/") %>Content/jquery.steps.css" />
     <link rel="stylesheet" href="<%= Page.ResolveUrl("~/") %>Content/panel.css" />
     <asp:ContentPlaceHolder ID="cphCSS" runat="server">
     </asp:ContentPlaceHolder>
@@ -106,6 +107,7 @@
     <script src="<%= Page.ResolveUrl("~/") %>Scripts/jquery-3.4.1.min.js"></script>
     <script src="<%= Page.ResolveUrl("~/") %>Scripts/jquery.validate.min.js"></script>
     <script src="<%= Page.ResolveUrl("~/") %>Scripts/bootstrap.min.js"></script>
+    <script src="<%= Page.ResolveUrl("~/") %>Scripts/jquery.steps.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
     <script>
         feather.replace()
