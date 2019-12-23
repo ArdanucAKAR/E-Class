@@ -9,13 +9,13 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
-    <form class="form-signin">
+    <form class="form-signin" id="loginForm">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">E-Class</h1>
-        <label for="inputEmail" class="sr-only">E-Mail Adres</label>
+        <label for="inputEmail" maxlength="30" class="sr-only">E-Mail Adres</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail Adres" required autofocus>
         <label for="inputPassword" class="sr-only">Şifre</label>
-        <input type="password" id="inputPassword" class="form-control" placeholder="Şifre" required>
+        <input type="password" minlength="6" id="inputPassword" class="form-control" placeholder="Şifre" required>
         <button class="btn btn-lg btn-success btn-block" type="submit">Giriş</button>
         <hr class="bracket" />
         <a href="Register.aspx" class="btn btn-lg btn-primary btn-block">Kayıt Ol</a>
@@ -26,6 +26,9 @@
     <script>
         $(document).ready(function () {
             $("body").addClass("text-center")
+            $('#loginForm').validate({
+                errorClass: 'alert alert-danger'
+            });
         })
     </script>
 </asp:Content>
