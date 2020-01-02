@@ -7,7 +7,7 @@
             width: 50%;
         }
 
-        #inputPassword {
+        #password {
             margin-bottom: -1px;
             border-radius: 0px !important;
         }
@@ -18,14 +18,14 @@
         <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">E-Class</h1>
         <label for="inputEmail" class="sr-only">E-Mail Adres</label>
-        <input name="email" type="email" id="inputEmail"  maxlength="30"  class="form-control" placeholder="E-Mail Adres" required autofocus>
+        <input name="email" type="email" id="inputEmail"  maxlength="30"  class="form-control m-0" placeholder="E-Mail Adres" required autofocus>
         <label for="password" class="sr-only">Şifre</label>
-        <input name="password" type="password" minlength="6" maxlength="30" id="password" class="form-control" placeholder="Şifre" required>
+        <input name="password" type="password" minlength="6" maxlength="30" id="password" class="form-control m-0" placeholder="Şifre" required>
         <label for="password_again" class="sr-only">Şifre Tekrar</label>
-        <input name="password_again" type="password" minlength="6" maxlength="30" id="password_again" class="form-control mt-0" placeholder="Şifre Tekrar" required>
-        <button class="btn btn-lg btn-success btn-block" type="submit">Kayıt Ol</button>
+        <input name="password_again" type="password" minlength="6" maxlength="30" id="password_again" class="form-control m-0" placeholder="Şifre Tekrar" required>
+        <button class="btn btn-lg btn-success btn-block mt-2" type="submit">Kayıt Ol</button>
         <hr class="bracket" />
-        <a href="Login.aspx" class="btn btn-lg btn-primary btn-block">Giriş Yap</a>
+        <a href="Login" class="btn btn-lg btn-primary btn-block">Giriş Yap</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
     </form>
 </asp:Content>
@@ -34,7 +34,7 @@
         $(document).ready(function () {
             $("body").addClass("text-center")
             $('#signinform').validate({
-                errorClass: 'alert alert-danger',
+                errorClass: 'm-0 mt-2 text-danger',
                 rules: {
                     password: "required",
                     password_again: {

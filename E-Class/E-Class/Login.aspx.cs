@@ -11,7 +11,13 @@ namespace E_Class
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (AuthenticationService.isLoggedIn() != null)
+            {
+                if (HttpContext.Current.Request.Cookies["User"]["User"] is Student)
+                    Response.Redirect("~/Panel/Student/index.aspx");
+                else
+                    Response.Redirect("~/Panel/Teacher/index.aspx");
+            }           
         }
     }
 }
