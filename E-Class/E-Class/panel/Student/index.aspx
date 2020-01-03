@@ -31,72 +31,98 @@
             z-index: 9999;
             color: black;
         }
+
+        [role=menu] li:first-child a {
+            position: fixed;
+            right: 105px;
+            bottom: 11px;
+        }
+
+        [role=menu] li:nth-child(2) a, [role=menu] li:nth-child(3) a {
+            position: fixed;
+            right: 18px;
+            bottom: 11px;
+        }
+
+        [role=menu] li:nth-child(3) a {
+            padding: 0.5em 2em !important;
+        }
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
+    <form runat="server">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label>Ders</label>
+                <asp:DropDownList ID="ddlLessons" runat="server" CssClass="form-control"></asp:DropDownList>
+                <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ErrorMessage="Ders Boş Geçilemez" ControlToValidate="ddlLessons" Display="Dynamic"></asp:RequiredFieldValidator>
+            </div>
+        </div>
+        <asp:Button ID="btnCreateTest" runat="server" Text="Oluştur" CssClass="btn btn-primary" ClientIDMode="Static" OnClick="btnCreateTest_Click" />
+    </form>
     <div id="questions">
         <asp:Repeater ID="repQuestions" runat="server">
             <ItemTemplate>
                 <h3>Soru</h3>
                 <section>
                     <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
-                        <div class="col-auto ">
-                            <img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg" height="180">
-                        </div>
+                        <%#
+                            Eval("QuestionPath").ToString() != string.Empty ? "<div class='col-auto'><img src='/images/"+Eval("QuestionPath").ToString()+"'  height='180'/></div>" : ""                           
+                        %>
                         <div class="col p-4 d-flex flex-column position-static">
-                            <h5><%# Container.DataItem %></h5>
+                            <h5><%# Eval("Question") %></h5>
                         </div>
                     </div>
                     <div class="p-3">
                         <div class="row">
-                            <div class="card w-50" data-letter="A">
+                            <div class="card w-50" data-letter="A" data-question="<%# Eval("QuestionID") %>" data-test="<%# Eval("TestID") %>">
                                 <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg" height="180">
-                                    </div>
+                                    <%#
+                                        Eval("APath").ToString() != string.Empty ? "<div class='col-auto'><img src='/images/"+Eval("APath").ToString()+"'  height='180'/></div>" : ""                           
+                                    %>
                                     <div class="col">
-                                        <div class="card-block px-2">
-                                            <h5 class="card-title">A şıkkı</h5>
-                                            <p class="card-text">4 Ayaklıdır.</p>
+                                        <div class="card-block p-2">
+                                            <h5 class="card-title">A</h5>
+                                            <p class="card-text"><%#Eval("A") %></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card w-50" data-letter="B">
+                            <div class="card w-50" data-letter="B" data-question="<%# Eval("QuestionID") %>" data-test="<%# Eval("TestID") %>">
                                 <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg" height="180">
-                                    </div>
+                                    <%#
+                                        Eval("BPath").ToString() != string.Empty ? "<div class='col-auto'><img src='/images/"+Eval("BPath").ToString()+"'  height='180'/></div>" : ""                           
+                                    %>
                                     <div class="col">
-                                        <div class="card-block px-2">
-                                            <h5 class="card-title">A şıkkı</h5>
-                                            <p class="card-text">4 Ayaklıdır.</p>
+                                        <div class="card-block p-2">
+                                            <h5 class="card-title">B</h5>
+                                            <p class="card-text"><%#Eval("B") %></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card w-50" data-letter="C">
+                            <div class="card w-50" data-letter="C" data-question="<%# Eval("QuestionID") %>" data-test="<%# Eval("TestID") %>">
                                 <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg" height="180">
-                                    </div>
+                                    <%#
+                                        Eval("CPath").ToString() != string.Empty ? "<div class='col-auto'><img src='/images/"+Eval("CPath").ToString()+"'  height='180'/></div>" : ""                           
+                                    %>
                                     <div class="col">
-                                        <div class="card-block px-2">
-                                            <h5 class="card-title">A şıkkı</h5>
-                                            <p class="card-text">4 Ayaklıdır.</p>
+                                        <div class="card-block p-2" data-question="<%# Eval("QuestionID") %>" data-test="<%# Eval("TestID") %>">
+                                            <h5 class="card-title">C</h5>
+                                            <p class="card-text"><%#Eval("C") %></p>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="card w-50" data-letter="D">
+                            <div class="card w-50" data-letter="D" data-question="<%# Eval("QuestionID") %>" data-test="<%# Eval("TestID") %>">
                                 <div class="row no-gutters">
-                                    <div class="col-auto">
-                                        <img src="https://cdn.pixabay.com/photo/2017/08/30/01/05/milky-way-2695569_960_720.jpg" height="180">
-                                    </div>
+                                    <%#
+                                        Eval("DPath").ToString() != string.Empty ? "<div class='col-auto'><img src='/images/"+Eval("DPath").ToString()+"'  height='180'/></div>" : ""                           
+                                    %>
                                     <div class="col">
-                                        <div class="card-block px-2">
-                                            <h5 class="card-title">A şıkkı</h5>
-                                            <p class="card-text">4 Ayaklıdır.</p>
+                                        <div class="card-block p-2">
+                                            <h5 class="card-title">D</h5>
+                                            <p class="card-text"><%#Eval("D") %></p>
                                         </div>
                                     </div>
                                 </div>
@@ -114,6 +140,27 @@
             headerTag: "h3",
             bodyTag: "section",
             transitionEffect: "slideLeft",
+            onFinished: function (event, currentIndex) {
+                $.ajax({
+                    type: "POST",
+                    url: "../../../WebService/AuthenticationServiceAPI.asmx/Results",
+                    data: JSON.stringify({
+                        questionAnswers: answers
+                    }),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (r) {
+                        console.log(r.d)
+                    },
+                    error: function (r) {
+                        console.log(r.responseText);
+                    },
+                    failure: function (r) {
+                        console.log(r.responseText);
+                    }
+                });
+                
+            },
             autoFocus: true,
             labels: {
                 current: "Bu soru:",
@@ -124,22 +171,45 @@
                 loading: "Yükleniyor ..."
             }
         });
-        let selected = false,
-            selectedValue;
+
+        let answers = [];
+
         $('.card').click(function () {
-            if (!$(this).hasClass('selected') && !selected) {
-                $(this).addClass('selected');
-                selected = true;
-                console.log("Seçilen Şık " + $(this).data('letter'));
-                console.log(selectedValue)
-            }
-            else {
-                if ($(this).hasClass('selected')) {
-                    $(this).removeClass('selected');
-                    selected = false;
+            if ($(this).hasClass('selected')) {
+                $(this).removeClass('selected')
+                answers.pop()
+            } else {
+                let itHas = answers.find(element => {
+                    return element.QuestionID == $(this).data('question')
+                });
+                if (!itHas) {
+                    $(this).addClass('selected')
+
+                    answers.push({
+                        TestID: $(this).data('test'),
+                        QuestionID: $(this).data('question'),
+                        Choice: $(this).data('letter')
+                    })
                 }
 
             }
+
+
+
+            console.log(answers)
+
+            //if (!$(this).hasClass('selected') && !selected) {
+            //    selected = true;
+            //    console.log("Seçilen Şık " + $(this).data('letter'));
+            //    console.log(selectedValue)
+            //}
+            //else {
+            //    if ($(this).hasClass('selected')) {
+            //        $(this).removeClass('selected');
+            //        selected = false;
+            //    }
+
+            //}
 
         })
     </script>

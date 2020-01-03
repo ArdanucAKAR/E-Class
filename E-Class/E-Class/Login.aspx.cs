@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,7 +13,7 @@ namespace E_Class
         {
             if (AuthenticationService.isLoggedIn() != null)
             {
-                if (HttpContext.Current.Request.Cookies["User"]["User"] is Student)
+                if (HttpContext.Current.Request.Cookies["User"]["type"] == "Student")
                     Response.Redirect("~/Panel/Student/index.aspx");
                 else
                     Response.Redirect("~/Panel/Teacher/index.aspx");

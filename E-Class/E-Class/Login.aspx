@@ -23,7 +23,7 @@
         </select>
         <button class="btn btn-lg btn-success btn-block" type="submit">Giriş</button>
         <hr class="bracket" />
-        <a href="Register" class="btn btn-lg btn-primary btn-block">Kayıt Ol</a>
+        <a href="Register.aspx" class="btn btn-lg btn-primary btn-block">Kayıt Ol</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
     </form>
 </asp:Content>
@@ -49,7 +49,6 @@
                             dataType: "json",
                             success: function (r) {
                                 if (r.d != null) {
-                                    console.log("sa");
                                     location.replace("/Panel/Student/index.aspx");
                                 }
                                 else {

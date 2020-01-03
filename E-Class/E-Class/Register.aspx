@@ -14,7 +14,7 @@
     </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
-    <form class="form-signin" name="register"  id="signinform">
+    <form class="form-signin" name="register" id="signinform">
         <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">E-Class</h1>
         <label for="inputEmail" class="sr-only">E-Mail Adres</label>
@@ -25,7 +25,7 @@
         <input name="password_again" type="password" minlength="6" maxlength="30" id="password_again" class="form-control m-0" placeholder="Şifre Tekrar" required>
         <button class="btn btn-lg btn-success btn-block mt-2" type="submit">Kayıt Ol</button>
         <hr class="bracket" />
-        <a href="Login" class="btn btn-lg btn-primary btn-block">Giriş Yap</a>
+        <a href="Login.aspx" class="btn btn-lg btn-primary btn-block">Giriş Yap</a>
         <p class="mt-5 mb-3 text-muted">&copy; 2019</p>
     </form>
 </asp:Content>
@@ -40,9 +40,32 @@
                     password_again: {
                         equalTo: "#password"
                     }
+                },
+                submitHandler: function () {
+                    var data = JSON.stringify({
+                        student: {
+                            Email: $("input[type='email']").val(),
+                            Password: $("input[type='password']").val()
+                        }
+                    });                    
+                    $.ajax({
+                        type: "POST",
+                        url: "../../../WebService/AuthenticationServiceAPI.asmx/Register",
+                        data: data,
+                        contentType: "application/json; charset=utf-8",
+                        dataType: "json",
+                        success: function (r) {                              
+                            location.replace("/Panel/Student/index.aspx");
+                        },
+                        error: function (r) {
+                            console.log(r.responseText);
+                        },
+                        failure: function (r) {
+                            console.log(r.responseText);
+                        }
+                    });
                 }
             })
-        })
-       
+        })       
     </script>
 </asp:Content>

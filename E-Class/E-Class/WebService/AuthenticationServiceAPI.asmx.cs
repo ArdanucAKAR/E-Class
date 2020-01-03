@@ -27,11 +27,23 @@ namespace E_Class.WebService
         {
             return (Student)AuthenticationService.Login(student);
         }
-        
+
+        [WebMethod(EnableSession = true)]
+        public Result Results(List<QuestionAnswer> questionAnswers)
+        {
+            return AuthenticationService.Results(questionAnswers);
+        }
+
         [WebMethod(EnableSession = true)]
         public void Logout()
         {
             AuthenticationService.Logout();
+        }
+
+        [WebMethod(EnableSession = true)]
+        public void Register(Student student)
+        {
+            AuthenticationService.Register(student);
         }
     }
 }

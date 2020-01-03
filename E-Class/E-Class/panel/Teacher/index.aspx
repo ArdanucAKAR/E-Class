@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Panel/Dash.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="E_Class.Panel.Teacher.index" UnobtrusiveValidationMode="None" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Panel/Dash.Master" EnableViewState="true" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="E_Class.Panel.Teacher.index" UnobtrusiveValidationMode="None" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCSS" runat="server">
 </asp:Content>
@@ -8,15 +8,14 @@
             <div class="form-row">
                 <div class="form-group col-md-12">
                     <label>Konu</label>
-                    <asp:DropDownList ID="ddlSubject" runat="server" CssClass="form-control"></asp:DropDownList>
+                    <asp:DropDownList ID="ddlSubject" runat="server" CssClass="form-control" ></asp:DropDownList>
                     <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ErrorMessage="Konu Boş Geçilemez" ControlToValidate="ddlSubject" Display="Dynamic"></asp:RequiredFieldValidator>
                 </div>
             </div>
             <div class="form-row">
                 <div class="form-group col-md-10">
                     <label>Soru</label>
-                    <asp:TextBox ID="txtQuestion" runat="server" CssClass="form-control" placeholder="Soru"></asp:TextBox>
-                    <asp:RequiredFieldValidator ID="rfvQuestion" runat="server" ErrorMessage="Soru Boş Geçilemez" ControlToValidate="txtQuestion" Display="Dynamic"></asp:RequiredFieldValidator>
+                    <textarea id="txtQuestion" clientidmode="Static" runat="server"></textarea>
                 </div>
                 <div class="form-group col-md-2">
                     <label>Sorunun Resmi</label>
@@ -62,4 +61,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphScript" runat="server">
+    <script>
+        CKEDITOR.replace("txtQuestion");
+    </script>
 </asp:Content>
