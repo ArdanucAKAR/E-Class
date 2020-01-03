@@ -15,7 +15,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <form class="form-signin" name="register" id="signinform">
-        <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <img class="mb-4" src="https://lh3.googleusercontent.com/O5T0FGXUrqIcq1Y2hx72-yZVPbb8Um02pt_QyMP7ZSsC_uscP90fDbJSkOkZBUn3jCshq5KIek1NOd9FNhesRLX9VhdgKcEGM-eWbNkX-5VxzzDotPS3uZimTT2zyFKNrfjaEKSo" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">E-Class</h1>
         <label for="inputEmail" class="sr-only">E-Mail Adres</label>
         <input name="email" type="email" id="inputEmail"  maxlength="30"  class="form-control m-0" placeholder="E-Mail Adres" required autofocus>

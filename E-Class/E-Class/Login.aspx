@@ -10,7 +10,7 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
     <form class="form-signin" id="loginForm">
-        <img class="mb-4" src="https://getbootstrap.com/docs/4.4/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <img class="mb-4" src="https://lh3.googleusercontent.com/O5T0FGXUrqIcq1Y2hx72-yZVPbb8Um02pt_QyMP7ZSsC_uscP90fDbJSkOkZBUn3jCshq5KIek1NOd9FNhesRLX9VhdgKcEGM-eWbNkX-5VxzzDotPS3uZimTT2zyFKNrfjaEKSo" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">E-Class</h1>
         <label for="inputEmail" maxlength="30" class="sr-only">E-Mail Adres</label>
         <input type="email" id="inputEmail" class="form-control" placeholder="E-Mail Adres" required autofocus>
@@ -28,6 +28,7 @@
     </form>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphScript" runat="server">
+    <script src="<%= Page.ResolveUrl("~/") %>Scripts/jquery.cookie-1.4.1.min.js"></script>
     <script>
         $(document).ready(function () {
             $("body").addClass("text-center")
@@ -52,7 +53,6 @@
                                     location.replace("/Panel/Student/index.aspx");
                                 }
                                 else {
-                                    
                                 }
                             },
                             error: function (r) {
@@ -79,9 +79,9 @@
                             success: function (r) {
                                 if (r.d != null) {
                                     location.replace("Panel/Teacher/index.aspx");
+                                    $.cookie("Type","Teacher")
                                 }
                                 else {
-                                    
                                 }
                             },
                             error: function (r) {

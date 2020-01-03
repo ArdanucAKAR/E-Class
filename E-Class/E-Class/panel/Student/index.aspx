@@ -58,7 +58,7 @@
                 <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ErrorMessage="Ders Boş Geçilemez" ControlToValidate="ddlLessons" Display="Dynamic"></asp:RequiredFieldValidator>
             </div>
         </div>
-        <asp:Button ID="btnCreateTest" runat="server" Text="Oluştur" CssClass="btn btn-primary" ClientIDMode="Static" OnClick="btnCreateTest_Click" />
+        <asp:Button ID="btnCreateTest" runat="server" Text="Başlat" CssClass="btn btn-primary" ClientIDMode="Static" OnClick="btnCreateTest_Click" />
     </form>
     <div id="questions">
         <asp:Repeater ID="repQuestions" runat="server">
@@ -151,6 +151,8 @@
                     dataType: "json",
                     success: function (r) {
                         console.log(r.d)
+                        alert(`Doğru sayısı : ${r.d.TrueCount} \nYanlış sayısı: ${r.d.FalseCount}`)
+                        location.replace("/Panel/Student/index.aspx");
                     },
                     error: function (r) {
                         console.log(r.responseText);

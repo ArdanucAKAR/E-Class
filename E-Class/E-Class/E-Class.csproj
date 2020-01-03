@@ -468,6 +468,8 @@
     <Content Include="Content\bootstrap-grid.css.map" />
     <Content Include="Master.Master" />
     <Content Include="panel\Dash.Master" />
+    <Content Include="Scripts\jquery.cookie-1.4.1.min.js" />
+    <Content Include="Scripts\jquery.cookie.js" />
     <Content Include="WebService\AuthenticationServiceAPI.asmx" />
     <Content Include="Scripts\ckeditor\ckeditor.pack" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />

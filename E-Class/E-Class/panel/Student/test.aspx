@@ -1,4 +1,5 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/panel/Dash.Master" AutoEventWireup="true" CodeBehind="test.aspx.cs" Inherits="E_Class.panel.Student.test" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="cphCSS" runat="server">
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMain" runat="server">
@@ -6,18 +7,19 @@
         <div class="form-row">
             <div class="form-group col-md-12">
                 <label>Testler</label>
-                <asp:DropDownList ID="ddlTest" runat="server" CssClass="form-control"></asp:DropDownList>
+                <asp:DropDownList ID="ddlTest" runat="server" CssClass="form-control" onchange="getStatistics()"></asp:DropDownList>
                 <asp:RequiredFieldValidator ID="rfvSubject" runat="server" ErrorMessage="Test Boş Geçilemez" ControlToValidate="ddlTest" Display="Dynamic"></asp:RequiredFieldValidator>
             </div>
         </div>
     </form>
-    <canvas id="bar-chart" height="400"></canvas>
+    <canvas id="bar-chart" height="250"></canvas>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="cphScript" runat="server">
+    <script src="../../Scripts/Chart.min.js"></script>
     <script>
         var linechart;
-        getStatistics('Today');
-        function getStatistics(statisticsType) {
+        getStatistics();
+        function getStatistics() {
             if (linechart !== undefined)
                 linechart.destroy();
             var ctx = $("#bar-chart");
@@ -30,7 +32,6 @@
                     }
                 },
                 responsive: true,
-                maintainAspectRatio: false,
                 responsiveAnimationDuration: 500,
                 legend: {
                     position: 'bottom',
@@ -65,76 +66,148 @@
                     text: ''
                 }
             };
-            var data = JSON.stringify({
-                member: {
-                    Id: MemberId
-                },
-                statisticsType: statisticsType
-            });
-            var statisticsTypes = [["Bugün", "Today"], ["Son 1 Hafta", "LastWeek"], ["Son 1 Ay", "LastMonth"], ["Son 6 Ay", "LastSixMonth"], ["Son 1 Sene", "LastYear"]];
-            var labels, returnData;
-            for (var a = 0; a < statisticsTypes.length; a++) {
-                if (statisticsTypes[a][1] === statisticsType) {
-                    labels = [statisticsTypes[a][0]];
-                    break;
-                }
-            }
-            $.ajax({
-                type: "POST",
-                url: "../../../AuthenticationService.asmx/GetStatistics",
-                data: data,
-                contentType: "application/json; charset=utf-8",
-                async: false,
-                dataType: "json",
-                success: function (r) {
-                    returnData = JSON.parse(r.d);
-                    returnData = returnData["GetStatistics"];
-                },
-                error: function (r) {
-                    console.log(r.responseText);
-                },
-                failure: function (r) {
-                    console.log(r.responseText);
-                }
-            });
             var chartData = {
-                labels: labels,
                 datasets: [
                     {
-                        label: "Birinci Kontrol Noktası",
-                        data: [returnData[0].StageCount],
+                        label: "Güneş Sistemi",
+                        data: [Math.floor(Math.random() * 4)],
                         backgroundColor: "#173E5F",
                         hoverBackgroundColor: "rgba(2, 24, 43, 1)",
                         borderColor: "transparent"
                     },
                     {
-                        label: "İkinci Kontrol Noktası",
-                        data: [returnData[1].StageCount],
+                        label: "Güneş ve Ay Tutulmaları",
+                        data: [Math.floor(Math.random() * 4)],
                         backgroundColor: "#20639B",
                         hoverBackgroundColor: "rgba(6, 58, 101, 1)",
                         borderColor: "transparent"
                     },
                     {
-                        label: "Üçüncü Kontrol Noktası",
-                        data: [returnData[2].StageCount],
+                        label: "Destek ve Hareket Sistemi",
+                        data: [Math.floor(Math.random() * 4)],
                         backgroundColor: "#3CAEA2",
                         hoverBackgroundColor: "rgba(9, 132, 119, 1)",
                         borderColor: "transparent"
                     },
                     {
-                        label: "Dördüncü Kontrol Noktası",
-                        data: [returnData[3].StageCount],
+                        label: "Sindirim Sistemi",
+                        data: [Math.floor(Math.random() * 4)],
                         backgroundColor: "#F6D55C",
                         hoverBackgroundColor: "rgba(181, 148, 25, 1)",
                         borderColor: "transparent"
                     },
                     {
-                        label: "Öğrenildi",
-                        data: [returnData[4].StageCount],
+                        label: "Dolaşım Sistemi",
+                        data: [Math.floor(Math.random() * 4)],
                         backgroundColor: "#ED573B",
                         hoverBackgroundColor: "rgba(165, 31, 6, 1)",
                         borderColor: "transparent"
-                    }
+                    },
+                    {
+                        label: "Solunum Sistemi",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#173E5F",
+                        hoverBackgroundColor: "rgba(2, 24, 43, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Boşaltım Sistemi",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#20639B",
+                        hoverBackgroundColor: "rgba(6, 58, 101, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Bileşke Kuvvet",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#3CAEA2",
+                        hoverBackgroundColor: "rgba(9, 132, 119, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Sabit Süratli Hareket",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#F6D55C",
+                        hoverBackgroundColor: "rgba(181, 148, 25, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Maddenin Tanecikli Yapısı",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#ED573B",
+                        hoverBackgroundColor: "rgba(165, 31, 6, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Yoğunluk",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#173E5F",
+                        hoverBackgroundColor: "rgba(2, 24, 43, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Madde ve Isı",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#20639B",
+                        hoverBackgroundColor: "rgba(6, 58, 101, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Yakıtlar",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#3CAEA2",
+                        hoverBackgroundColor: "rgba(9, 132, 119, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Sesin Yayılması",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#F6D55C",
+                        hoverBackgroundColor: "rgba(181, 148, 25, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Sesin Farklı Ortamlarda Farklı Duyulması",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#ED573B",
+                        hoverBackgroundColor: "rgba(165, 31, 6, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Sesin Sürati",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#173E5F",
+                        hoverBackgroundColor: "rgba(2, 24, 43, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Sesin Maddeyle Etkileşmesi",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#20639B",
+                        hoverBackgroundColor: "rgba(6, 58, 101, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Denetleyici ve Düzenleyici Sistemler",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#3CAEA2",
+                        hoverBackgroundColor: "rgba(9, 132, 119, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Duyu Organları",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#F6D55C",
+                        hoverBackgroundColor: "rgba(181, 148, 25, 1)",
+                        borderColor: "transparent"
+                    },
+                    {
+                        label: "Sistemlerin Sağlığı",
+                        data: [Math.floor(Math.random() * 4)],
+                        backgroundColor: "#ED573B",
+                        hoverBackgroundColor: "rgba(165, 31, 6, 1)",
+                        borderColor: "transparent"
+                    },
                 ]
             };
             var config = {

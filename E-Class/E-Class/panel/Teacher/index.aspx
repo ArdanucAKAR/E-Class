@@ -15,7 +15,8 @@
             <div class="form-row">
                 <div class="form-group col-md-10">
                     <label>Soru</label>
-                    <textarea id="txtQuestion" clientidmode="Static" runat="server"></textarea>
+                    <textarea id="txtQuestion" clientidmode="Static" runat="server" maxlength="50"></textarea>
+
                 </div>
                 <div class="form-group col-md-2">
                     <label>Sorunun Resmi</label>
@@ -63,5 +64,13 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cphScript" runat="server">
     <script>
         CKEDITOR.replace("txtQuestion");
+        window.onload = function () {
+            CKEDITOR.instances.txtQuestion.on('key', function () {
+                var str = CKEDITOR.instances.txtQuestion.getData();
+                if (str.length > 800) {
+                    CKEDITOR.instances.txtQuestion.setData(str.substring(0, 800));
+                }
+            });
+        };
     </script>
 </asp:Content>
