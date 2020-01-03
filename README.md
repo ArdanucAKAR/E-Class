@@ -14,6 +14,8 @@ Software Test Documentation
 
 ## Term Project
 
+![](https://lh4.googleusercontent.com/Kt4IL6kHwKNpcwnTUcBPhXQWYFhHYhxoyNAvjTlA03nuCnPwFbuihuFFXzNjfA44aNCGhOPY-jLKqTiP2KzilYyOdH3h4issYqXQZ5sQXqx2EFDWrIl9h_KEISe16jW5bk3Rcn3z)
+
 
 Source Monitor:
 
